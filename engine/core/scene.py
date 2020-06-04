@@ -130,7 +130,7 @@ class Scene:
 	def update(self):
 		
 		if not self.game.fader.fading:
-			for mob in self.live_mobs.values():	mob.base_update()
+			for mob in self.live_mobs.values():	mob.update()
 			self.game.renderer.update()
 		
 	def render(self):

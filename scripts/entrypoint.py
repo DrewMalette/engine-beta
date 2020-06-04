@@ -22,8 +22,6 @@ def newgame_init(game):
 	
 def newgame_loop(game):
 
-	game.player.move(game.controller.x_axis, game.controller.y_axis)
-	
 	if game.controller.exit:
 		game.next_script = title_init
 		game.music_tracks["titletrack"].fadeout(1000)
@@ -60,7 +58,7 @@ def init():
 	game = engine.core.Game(os.path.join(filepaths.image_path, "titlecard.png"))
 	game.ui["dialoguebox"] = engine.core.UI_Dialogue("dialoguebox", game, (170,360), (300,100))
 	game.ui["titleselect"] = engine.core.UI_Select("titleselect", game, (245,300), (150,54), ["New Game", "Quit to Desktop"])
-	game.player = engine.core.Mob(game, os.path.join(filepaths.image_path, "sprite_jon.png"), "Jon")
+	game.player = engine.core.Player(game, os.path.join(filepaths.image_path, "sprite_jon.png"), "Jon")
 	game.music_tracks["titletrack"] = pygame.mixer.Sound(os.path.join(filepaths.sound_path, "rstheme.ogg"))
 	
 	title_init(game)

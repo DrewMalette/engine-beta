@@ -38,10 +38,7 @@ class Mob(pygame.Rect):
 		self.alive = True # going to StatBlock?
 		self.dying = False
 		self.opacity = 255
-		
-		self.talk_rect = pygame.Rect(0,0,12,12)
-		#self.action = Interactor(self)
-		
+				
 	def spawn(self):
 	
 		self.scene.live_mobs[self.name] = self

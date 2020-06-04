@@ -76,6 +76,7 @@ class Game:
 		self.tick = (self.tick + 1) % 4294967296
 		pygame.event.pump()
 		self.controller.update(pygame.key.get_pressed())
+		#if self.scene: self.scene.update()
 		for obj in self.obj_stack:
 			if getattr(obj, "update", None):
 				obj.update()
@@ -94,6 +95,9 @@ class Game:
 				obj.render()
 			else:
 				self.display.blit(obj, (0,0))
+				
+		r = (self.player.action.x - self.renderer.x, self.player.action.y - self.renderer.y, self.player.action.w, self.player.action.h)
+		pygame.draw.rect(self.display, (0xff,0,0), r, 1)
 		pygame.display.flip()
 					
 class Controller:
@@ -196,6 +200,8 @@ class Renderer(pygame.Rect):
 		self.blank = None
 		self.following = None
 		
+		self.scene = None
+		
 	def tile_prep(self, layer, col, row):
 
 		x_offset = self.x % self.tilesize
@@ -240,7 +246,7 @@ class Renderer(pygame.Rect):
 			self.y = self.game.scene.rows * self.tilesize - self.h
 		elif self.y < 0:
 			self.y = 0
-				
+
 	def render(self):
 	
 		for row in range(self.rows): # draw the bottom and middle tile layers
