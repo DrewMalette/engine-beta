@@ -59,7 +59,7 @@ def init():
 	game.ui["dialoguebox"] = engine.core.UI_Dialogue("dialoguebox", game, (170,360), (300,100))
 	game.ui["titleselect"] = engine.core.UI_Select("titleselect", game, (245,300), (150,54), ["New Game", "Quit to Desktop"])
 	game.player = engine.core.Player(game, os.path.join(filepaths.image_path, "spr_ark2.png"), "Ark")
-	game.music_tracks["titletrack"] = pygame.mixer.Sound(os.path.join(filepaths.sound_path, "rstheme.ogg"))
+	game.music_tracks["titletrack"] = pygame.mixer.Sound(os.path.join(filepaths.sound_path, "titlemusic.ogg"))
 	
 	title_init(game)
 	game.main()
